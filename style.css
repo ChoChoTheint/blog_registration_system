@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
+
+body {
+  height: 100vh;
+  /* position: fixed; */
+  background-image: url("https://cdn.pixabay.com/photo/2016/11/23/13/48/beach-1852945_1280.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+}
+input[type="text"],
+input[type="password"] {
+  background-color: #96d3ec !important;
+}
+
