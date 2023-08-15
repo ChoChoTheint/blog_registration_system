@@ -27,12 +27,14 @@ if (isset($_REQUEST['new_post'])) {
 </head>
 
 <body>
-    <div class="container mt-5">
+    <div class="container mt-5" style="position: fixed;left:500px;top: 100px;">
+    <div class="col-md-4">
         <form action="" method="post">
             <input type="text" name="title" placeholder="Blog Title" class="form-control text-dark my-3">
             <textarea name="content" placeholder="Blog Content" id="" cols="30" rows="10" class="form-control text-dark my-3"></textarea>
             <button name="new_post" type="submit" class="btn btn-dark">Add Post</button>
         </form>
+    </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>

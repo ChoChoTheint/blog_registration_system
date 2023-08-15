@@ -28,6 +28,7 @@ if(isset($_REQUEST['delete'])){
 
 <body>
     <div class="container my-5" style="position: fixed;top:100px;left:500px">
+   
         <?php foreach ($query as $q) { ?>
                 <div class="col-4 d-flex justify-content-center align-items-center mb-2">
                     <div class="card" >
@@ -46,6 +47,8 @@ if(isset($_REQUEST['delete'])){
                     </div>
                 </div>
             <?php } ?>
+ 
+        
            
     </div>
     <!-- js file -->

@@ -35,12 +35,12 @@ if (!isset($_SESSION['username'])) {
                 <div class="alert alert-success" id="success-message">
                     Post has been added successfully!
                 </div>
-            <?php }else if($_REQUEST['info'] == "updated"){ ?>
-                <div class="alert alert-success" id="success-message">
+            <?php } else if ($_REQUEST['info'] == "updated") { ?>
+                <div class="alert alert-success" id="success-update-message">
                     Post has been updated successfully!
                 </div>
-            <?php }else if($_REQUEST['info'] == "delete"){ ?>
-                <div class="alert alert-success" id="success-message">
+            <?php } else if ($_REQUEST['info'] == "delete") { ?>
+                <div class="alert alert-success" id="success-delete-message">
                     Post has been deleted successfully!
                 </div>
             <?php } ?>
@@ -59,7 +59,7 @@ if (!isset($_SESSION['username'])) {
                     <a href="pdf.php" class="btn btn-success mb-3">Download</a>
                 </div>
             </div>
-            
+
         </div>
 
         <div class="row">
@@ -68,7 +68,9 @@ if (!isset($_SESSION['username'])) {
                     <div class="card" id="showdata">
                         <div class="card-body" style="width: 18rem;">
                             <h3 class="card-title"><?php echo $q['title']; ?></h3>
-                            <p class="card-text"><?php echo mb_strimwidth($q['content'],0,100,'....'); ?></p>
+                            <!-- mb_strimwidth(,0,200,'....') -->
+                            <p class="card-text"><?php echo $q['content']; ?></p>
+                            <p>Author <strong><?php echo $_SESSION['username']; ?></strong></p>
                             <a href="detail.php?id=<?php echo $q['id']; ?>" class="btn btn-primary">Read More</a>
                         </div>
                     </div>
@@ -76,23 +78,37 @@ if (!isset($_SESSION['username'])) {
             <?php } ?>
         </div>
     </div>
-
-    <!-- js file -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script>
         setTimeout(function() {
             $('#success-message').fadeOut('slow');
         }, 3000);
-        $(document).ready(function(){
-            $('#search').on("keyup",function(){
+        setTimeout(function() {
+            $('#success-update-message').fadeOut('slow');
+        }, 3000);
+        setTimeout(function() {
+            $('#success-delete-message').fadeOut('slow');
+        }, 3000);
+        setTimeout(function() {
+            $('#fail-message').fadeOut('slow');
+        }, 3000);
+        $(document).ready(function() {
+            $('#search').keyup(function() {
                 var search = $(this).val();
                 $.ajax({
                     method: 'POST',
                     url: 'searchajax.php',
-                    data:{title:search,content:search},
-                    success:function(data){
+                    data: {
+                        title: search,
+                        content: search
+                    },
+                    success: function(data) {
+                    //    $q.title.clear();
+                    //    $q.content.clear();
                         $('#showdata').html(data);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error); // Log any errors to the console
                     }
                 });
             });

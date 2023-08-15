@@ -1,12 +1,13 @@
 <?php
 include "connection.php";
+if(isset($_POST['title']) || isset($_POST['content'])){
 $title = $_POST['title'];
 $content = $_POST['content'];
-$sql = "SELECT * FROM post WHERE title like %".$title."% AND content like %".$content."%";
-
+$sql = "SELECT * FROM post WHERE title LIKE '{$title}%' OR content LIKE '{$content}%'";
 $query = mysqli_query($conn,$sql);
+
 $data = '';
-if(is_array($query)){
+if($query){
     while($row = mysqli_fetch_assoc($query)){
         $data .= "<div class='row'>
             <div class='col-4 d-flex justify-content-center align-items-center mb-2'>
@@ -26,5 +27,7 @@ if(is_array($query)){
         </div>";
  }
 echo $data;
+}
+
 
 ?>

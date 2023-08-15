@@ -29,13 +29,15 @@ if (isset($_REQUEST['update'])) {
 </head>
 
 <body>
-    <div class="container mt-5" style="position: fixed;left:100px;top: 100px;">
+    <div class="container mt-5" style="position: fixed;left:500px;top: 100px;">
         <?php foreach($query as $q){?>
-            <form action="" method="post">
+          <div class="col-md-4 ">
+          <form action="" method="post">
                 <input type="text" name="title" placeholder="Blog Title" class="form-control  my-3" value="<?php echo $q['title']; ?>">
                 <textarea name="content" placeholder="Blog Content" id="" cols="30" rows="10" class="form-control my-3" value=""><?php echo htmlspecialchars($q['content']); ?></textarea>
                 <button name="update" type="submit" class="btn btn-dark">Update</button>
             </form>
+          </div>
         <?php } ?>
     </div>
 

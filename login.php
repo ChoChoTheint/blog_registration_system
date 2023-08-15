@@ -17,8 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_SESSION['username'] = $username;
                 header('location:welcome.php');
             } else {
-                $invalid = 1;
-                // echo "Invalid credentials";
+                $invalid = 1;  
             }
         }
     }
@@ -36,19 +35,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body>
-    <?php
-    if ($login) {
-        echo "<div class='alert alert-success' role='alert' id='success-message'>
-            Login Successfully
-        </div>";
-    } else {
-        if ($invalid) {
-            echo "<div class='alert alert-danger' role='alert' id='fail-message'>
-                    Invalid credentials
-                </div>";
-        }
+<?php
+
+if ($login) {
+    echo "<div class='alert alert-success' role='alert' id='success-message'>
+        Login Successfully
+    </div>";
+} else {
+    if ($invalid) {
+        echo "<div class='alert alert-danger' role='alert' id='fail-message'>
+                Invalid credentials
+            </div>";
     }
-    ?>
+}
+?>
+    
     <!-- js file -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script>
